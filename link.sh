@@ -3,21 +3,21 @@
 # assumes dotfiles are always at ~/git/dotfiles
 
 # zsh
-ln -s ~/git/dotfiles/zsh ~/.zsh
-ln -s ~/git/dotfiles/zsh/zshrc ~/.zshrc
+ln -sfh ~/git/dotfiles/zsh ~/.zsh
+ln -sf ~/git/dotfiles/zsh/zshrc ~/.zshrc
 
 # git
-ln -s ~/git/dotfiles/git/gitignore_global ~/.gitignore_global
-ln -s ~/git/dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/git/dotfiles/git/gitignore_global ~/.gitignore_global
+ln -sf ~/git/dotfiles/git/gitconfig ~/.gitconfig
 
 # Brewfile
-ln -s ~/git/dotfiles/Brewfile ~/Brewfile
+ln -sf ~/git/dotfiles/Brewfile ~/Brewfile
 
 # gpg
-ln -s ~/git/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
+ln -sf ~/git/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
 
 # ssh
-ln -s ~/git/dotfiles/ssh/config ~/.ssh/config
+ln -sf ~/git/dotfiles/ssh/config ~/.ssh/config
 
 ## Sublime
-ln -s ~/git/dotfiles/sublime ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+ln -sfh ~/git/dotfiles/sublime ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
