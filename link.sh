@@ -15,3 +15,6 @@ ln -s ~/git/dotfiles/Brewfile ~/Brewfile
 
 # gpg
 ln -s ~/git/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
+
+# ssh
+ln -s ~/git/dotfiles/ssh/config ~/.ssh/config
