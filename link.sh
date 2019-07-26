@@ -18,3 +18,6 @@ ln -s ~/git/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
 
 # ssh
 ln -s ~/git/dotfiles/ssh/config ~/.ssh/config
+
+## Sublime
+ln -s ~/git/dotfiles/sublime ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User

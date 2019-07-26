@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Package Control",
+		"RubyTest",
+		"SublimeLinter",
+		"SublimeLinter-contrib-standardrb"
+	],
+	"repositories":
+	[
+		"https://github.com/cpruitt/SublimeLinter-contrib-standardrb"
+	]
+}
