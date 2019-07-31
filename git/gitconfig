@@ -25,6 +25,7 @@
 	required = true
 [commit]
 	verbose = true
+	gpgsign = true
 [includeIf "gitdir:~/srclab/"]
   path = ~/srclab/.gitconfig
 [rebase]
