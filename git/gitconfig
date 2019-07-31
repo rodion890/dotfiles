@@ -25,7 +25,7 @@
 	required = true
 [commit]
 	verbose = true
-[includeIf "gitdir:~/gitlab/"]
-  path = ~/gitlab/.gitconfig
+[includeIf "gitdir:~/srclab/"]
+  path = ~/srclab/.gitconfig
 [rebase]
 	autosquash = true
