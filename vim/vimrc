@@ -1,1 +1,17 @@
+" Don't try to be vi compatible
+set nocompatible
+
+" syntax highlighting
 syntax on
+
+" line numbers
+set number
+
+" ruler
+set ruler
+
+" whitespace
+set wrap
+set textwidth=79
+set tabstop=2
+set softtabstop=2
