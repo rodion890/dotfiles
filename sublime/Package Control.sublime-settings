@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Package Control",
+		"PlainTasks",
 		"RubyTest",
 		"SublimeLinter",
 		"SublimeLinter-contrib-standardrb"
