@@ -12,5 +12,6 @@ Thumbs.db
 ######################
 /.vscode
 *.todo
+*.notes
 .swp
 
