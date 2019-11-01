@@ -1,4 +1,4 @@
 Host *
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/work
+  IdentityFile ~/.ssh/work_ed25519
