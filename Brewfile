@@ -54,4 +54,4 @@ cask 'sequel-pro'
 cask 'slack'
 cask 'keybase'
 cask 'sublime-text'
-
+cask 'visual-studio-code'
