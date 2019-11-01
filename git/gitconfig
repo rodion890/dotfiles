@@ -4,7 +4,7 @@
 	signkey = 0x4A0DE55F078423CC
 [core]
 	pager = less -SMR
-	editor = subl -w
+	editor = code --wait
 	excludesfile = ~/.gitignore_global
 [alias]
 	lg = log --color --pretty=oneline --abbrev-commit
@@ -14,10 +14,10 @@
 	stat = status
 	fp = push --force-with-lease
 	check = checkout
-  staged = diff --staged
+  	staged = diff --staged
 	intent = add --intent-to-add .
 [diff]
-	tool = subl -w
+	tool = code --wait
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -26,7 +26,5 @@
 [commit]
 	verbose = true
 	gpgsign = true
-[includeIf "gitdir:~/srclab/"]
-  path = ~/srclab/.gitconfig
 [rebase]
 	autosquash = true
