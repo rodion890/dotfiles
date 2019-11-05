@@ -35,6 +35,10 @@ brew 'terraform'
 tap 'wata727/tflint'
 brew 'tflint'
 
+# cloud foundary
+tap 'cloudfoundry/tap'
+brew 'cf-cli'
+
 # heroku
 tap 'heroku/brew'
 brew 'heroku'
