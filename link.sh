@@ -31,4 +31,5 @@ ln -sf ~/src/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/U
 ln -sfh ~/src/dotfiles/sublime ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 
 # ruby
-ln -sf ~/src/dotfiles/.ruby-version ~/.ruby-version
+ln -sf ~/src/dotfiles/ruby/ruby-version ~/.ruby-version
+ln -sf ~/src/dotfiles/ruby/irbrc ~/.irbrc
