@@ -68,18 +68,21 @@
 	"spellright.groupDictionaries": false,
 	"editor.stablePeek": true,
 	"files.insertFinalNewline": true,
-	"ruby.useLanguageServer": true,
 	"ruby.useBundler": true,
 	"ruby.lint": {
 		"standard": true
 	  },
 	"ruby.format": "standard",
 	"[git-commit]": {
+		"rewrap.wrappingColumn": 80,
 		"editor.rulers": [
       50,
       80
 		]
     },
 		"editor.tabSize": 2,
-		"ruby.intellisense": "rubyLocate"
+		"ruby.intellisense": "rubyLocate",
+		"window.openFilesInNewWindow": "default",
+		"ruby.specFocusTerminal": false,
+		"ruby.useLanguageServer": true
 }
