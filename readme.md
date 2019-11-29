@@ -4,9 +4,7 @@
 - create `~/src` directory
 - clone this repo into `~/src/dotfiles`
 - create ssh key for work:
-  `ssh-keygen -t rsa -b 4096 -C "me@work.com"`
-  - when asked, save the key as `work`, if you want a different name you
-  will need to change the `ssh/conifg` to match
+  `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/work_ed25519 -C "me@work.com"`
   - add a passphrase
 
 - run `brew bundle` from your home directory
