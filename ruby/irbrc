@@ -1,3 +1,29 @@
+require 'irb/completion'
+
 # save the history
-IRB.conf[:SAVE_HISTORY] = 200
+IRB.conf[:SAVE_HISTORY] = 500
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+
+# autoindent
+IRB.conf[:AUTO_INDENT] = true
+
+# aliases
+alias q exit
+
+# Rails environment prompt
+if ENV['RAILS_ENV']
+  rails_env = ENV['RAILS_ENV']
+  rails_root = File.basename(Dir.pwd)
+  prompt = "#{rails_root}[#{rails_env.sub('production', 'prod').sub('development', 'dev')}]"
+  IRB.conf[:PROMPT] ||= {}
+
+  IRB.conf[:PROMPT][:RAILS] = {
+    :PROMPT_I => "#{prompt}:%03n:%i> ",
+    :PROMPT_N => "#{prompt}:%03n:%i> ",
+    :PROMPT_S => "#{prompt}:%03n:%i%l ",
+    :PROMPT_C => "#{prompt}:%03n:%i* ",
+    :RETURN   => "=> %s\n"
+  }
+
+  IRB.conf[:PROMPT_MODE] = :RAILS
+end
