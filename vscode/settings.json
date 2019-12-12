@@ -29,5 +29,6 @@
       50,
       80
 		]
-  },
+	},
+	"workbench.tips.enabled": false,
 }
