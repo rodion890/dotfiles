@@ -1,3 +1,5 @@
+set encoding=utf-8
+
 " Don't try to be vi compatible
 set nocompatible
 
@@ -6,15 +8,33 @@ syntax on
 
 " line numbers
 set number
+set numberwidth=5
+
+" sensible
+set backspace=2
+set nobackup
+set nowritebackup
+set noswapfile
 
 " ruler
 set ruler
+set textwidth=80
+set colorcolumn=+1
 
 " whitespace
-set wrap
-set textwidth=79
 set tabstop=2
-set softtabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" don't use arrow keys
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" fuzzy search
+nnoremap <c-p> :Files<cr>
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
