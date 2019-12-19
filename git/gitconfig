@@ -4,7 +4,7 @@
 	signkey = 0x4A0DE55F078423CC
 [core]
 	pager = less -SMR
-	editor = code --wait
+	editor = vim 
 	excludesfile = ~/.gitignore_global
 [alias]
 	lg = log --color --pretty=oneline --abbrev-commit
