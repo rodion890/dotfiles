@@ -41,6 +41,10 @@ set complete+=kspell
 autocmd FileType gitcommit setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
 " don't use arrow keys
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
