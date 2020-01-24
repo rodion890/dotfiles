@@ -23,6 +23,10 @@ set ruler
 set textwidth=80
 set colorcolumn=+1
 
+" indenting
+set autoindent
+set smartindent
+
 " whitespace
 set tabstop=2
 set shiftwidth=2
