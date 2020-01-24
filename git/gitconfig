@@ -1,7 +1,7 @@
 [user]
 	email = meyric@dxw.com
-	name = Meyric Rawlings
-	signkey = 0x4A0DE55F078423CC
+	name = meyric
+	signkey = 0xC3EDAF09BECD20E5
 [core]
 	pager = less -SMR
 	editor = vim 
