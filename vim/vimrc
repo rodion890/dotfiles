@@ -51,8 +51,8 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" fuzzy search
-nnoremap <c-p> :Files<cr>
+" RSpec.vim
+let g:rspec_command = "!bundle exec rspec --drb {spec}"
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
