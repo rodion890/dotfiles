@@ -1,4 +1,6 @@
 set encoding=utf-8
+" theme
+colorscheme monokai
 
 " Don't try to be vi compatible
 set nocompatible
