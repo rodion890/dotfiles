@@ -33,6 +33,14 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" spelling
+set spelllang=en_gb
+set complete+=kspell
+
+" spelling for filetypes
+autocmd FileType gitcommit setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " don't use arrow keys
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
