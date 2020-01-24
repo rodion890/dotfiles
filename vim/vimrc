@@ -7,7 +7,7 @@ set nocompatible
 syntax on
 
 " line numbers
-set number
+set number relativenumber
 set numberwidth=5
 
 " sensible
