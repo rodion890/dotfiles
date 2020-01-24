@@ -54,8 +54,27 @@ nnoremap <Down> :echoe "Use j"<CR>
 " RSpec.vim
 let g:rspec_command = "!bundle exec rspec --drb {spec}"
 
-" RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" ALE
+let g:ale_lint_on_save =  0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_linters_explicit = 1
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'always'
+
+let g:ale_linters = {
+\   'ruby': ['standardrb','solargraph'],
+\}
+
+let g:ale_fix_on_save = 1
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+" go to definition, requires solargraph
+:map <leader>d :ALEGoToDefinition<CR>
