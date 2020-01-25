@@ -43,6 +43,9 @@ brew 'cf-cli'
 tap 'heroku/brew'
 brew 'heroku'
 
+# silver searcher
+brew ag
+
 # casks
 tap 'homebrew/cask-versions'
 
@@ -57,5 +60,3 @@ cask 'postico'
 cask 'sequel-pro'
 cask 'slack'
 cask 'keybase'
-cask 'sublime-text'
-cask 'visual-studio-code'
