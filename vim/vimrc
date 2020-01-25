@@ -8,6 +8,9 @@ set nocompatible
 " syntax highlighting
 syntax on
 
+" search hightlight
+set hlsearch
+
 " line numbers
 set number relativenumber
 set numberwidth=5
