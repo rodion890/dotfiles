@@ -1,3 +1,15 @@
+" vim-plug install
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" plugins can be loaded now
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-rails'
+call plug#end()
+
 set encoding=utf-8
 
 " theme
