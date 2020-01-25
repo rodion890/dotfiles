@@ -23,6 +23,8 @@ set backspace=2
 set nobackup
 set nowritebackup
 set noswapfile
+set splitbelow
+set splitright
 
 " ruler
 set ruler
