@@ -11,6 +11,9 @@ syntax on
 " search hightlight
 set hlsearch
 
+" show file name always in status line
+set laststatus=2
+
 " line numbers
 set number relativenumber
 set numberwidth=5
