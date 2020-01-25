@@ -1,30 +1,31 @@
 [user]
-	email = meyric@dxw.com
-	name = meyric
-	signkey = 0xC3EDAF09BECD20E5
+  email = meyric@dxw.com
+  name = meyric
+  signkey = 0xC3EDAF09BECD20E5
 [core]
-	pager = less -SMR
-	editor = vim 
-	excludesfile = ~/.gitignore_global
+  pager = less -SMR
+  editor = vim
+  excludesfile = ~/.gitignore_global
 [alias]
-	lg = log --color --pretty=oneline --abbrev-commit
-	logsig = log --show-signature -1
-	fixup = commit --fixup
-	amend = commit --amend
-	stat = status
-	fp = push --force-with-lease
-	check = checkout
-  	staged = diff --staged
-	intent = add --intent-to-add .
+  lg = log --color --pretty=oneline --abbrev-commit
+  logsig = log --show-signature -1
+  fixup = commit --fixup
+  amend = commit --amend
+  stat = status
+  fp = push --force-with-lease
+  check = checkout
+  staged = diff --staged
+  intent = add --intent-to-add .
+  patch = git add -p .
 [diff]
-	tool = code --wait
+  tool = vim
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [commit]
-	verbose = true
-	gpgsign = true
+  verbose = true
+  gpgsign = true
 [rebase]
-	autosquash = true
+  autosquash = true
