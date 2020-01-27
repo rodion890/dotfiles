@@ -7,7 +7,8 @@
   editor = vim
   excludesfile = ~/.gitignore_global
 [alias]
-  lg = log --color --pretty=oneline --abbrev-commit
+  lg = log --color --oneline
+  lgg = log --color --oneline --graph
   logsig = log --show-signature -1
   fixup = commit --fixup
   amend = commit --amend
