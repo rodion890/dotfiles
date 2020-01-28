@@ -46,7 +46,7 @@ set nowritebackup
 set noswapfile
 set splitbelow
 set splitright
-
+set equalalways
 " ruler
 set ruler
 set textwidth=80
