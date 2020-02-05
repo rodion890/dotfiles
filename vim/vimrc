@@ -73,8 +73,7 @@ set complete+=kspell
   autocmd BufRead,BufNewFile *.md setlocal spell | set wrap
 
 " spelling for filetypes
-autocmd FileType gitcommit setlocal spell
-autocmd BufRead,BufNewFile *.md setlocal spell
+  autocmd FileType gitcommit setlocal spell
 
 " netrw
 let g:netrw_liststyle = 3
