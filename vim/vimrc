@@ -120,5 +120,20 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
-" go to definition, requires solargraph
-:map <leader>d :ALEGoToDefinition<CR>
+" I want to use 'ag' not 'grep'
+set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
+
+" Find is my command to find something, put it in the quickfix and redraw
+command! -nargs=+ Find execute 'silent grep! <args>' | copen 25| redraw!
+
+"start a search query by pressing \
+nnoremap \ :Find<space>
+
+"search for word under cursor by pressing |
+nnoremap \| :Find "\b<C-R><C-W>\b"<cr>
+
+" Use ag in fzf for listing files. Lightning fast and respects .gitignore
+let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+
+" crtl-p search files
+nnoremap <c-p> :Files<cr>
