@@ -143,4 +143,4 @@ nnoremap \| :Find "\b<C-R><C-W>\b"<cr>
 let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 
 " crtl-p search files
-nnoremap <c-p> :Files<cr>
+nnoremap ; :Files<cr>
