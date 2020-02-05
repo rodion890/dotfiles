@@ -48,6 +48,7 @@ set noswapfile
 set splitbelow
 set splitright
 set equalalways
+
 " ruler
 set ruler
 set textwidth=80
@@ -78,6 +79,7 @@ set complete+=kspell
 " netrw
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
+let g:netrw_localrmdir='rm -r'
 
 " leader is space
 let mapleader = " "
@@ -103,6 +105,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" close quickfix windoew
+nnoremap . :cclose<cr>
 
 " ALE
 let g:ale_lint_on_save =  0
