@@ -8,14 +8,15 @@ endif
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'gabesoft/vim-ags'
 Plug 'crusoexia/vim-monokai'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-endwise'
 Plug 'Yggdroot/indentLine'
 Plug 'janko/vim-test'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'ervandew/supertab'
 call plug#end()
 
 set encoding=utf-8
