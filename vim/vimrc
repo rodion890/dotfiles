@@ -67,6 +67,11 @@ set expandtab
 set spelllang=en_gb
 set complete+=kspell
 
+" file specific
+  au BufRead,BufNewFile *.md setlocal textwidth=80
+  autocmd BufRead,BufNewFile *.md setlocal wrap
+  autocmd BufRead,BufNewFile *.md setlocal spell | set wrap
+
 " spelling for filetypes
 autocmd FileType gitcommit setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
