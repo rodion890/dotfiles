@@ -1,10 +1,11 @@
 # zsh
+brew 'zsh'
+brew 'zsh-autosuggestions'
 brew 'zsh-syntax-highlighting'
 brew 'zsh-completions'
 
-# shell tools
-brew 'tmux'
-brew 'htop'
+# vim
+brew 'vim'
 
 # gpg
 brew 'gpg'
@@ -44,7 +45,10 @@ tap 'heroku/brew'
 brew 'heroku'
 
 # silver searcher
-brew ag
+brew 'ag'
+
+# fuzzy find
+brew 'fzf'
 
 # casks
 tap 'homebrew/cask-versions'
