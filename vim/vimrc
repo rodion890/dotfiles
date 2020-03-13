@@ -34,8 +34,13 @@ set nocompatible
 " syntax highlighting
 syntax on
 
+" cursor
+set cul
+
 " search hightlight
 set hlsearch
+highlight Search ctermbg=Yellow ctermfg=Black
+nnoremap <Leader>/ :nohl<CR>
 
 " show file name always in status line
 set laststatus=2
@@ -44,7 +49,43 @@ set laststatus=2
 set number relativenumber
 set numberwidth=5
 
-" sensible
+" sensible stuff
+set backspace=2
+set nobackup
+set nowritebackup
+set noswapfile
+call plug#end()
+
+" encoding
+set encoding=utf-8
+
+" theme
+set background=dark
+let g:edge_disable_italic_comment = 1
+colorscheme edge
+
+" Don't try to be vi compatible
+set nocompatible
+
+" syntax highlighting
+syntax on
+
+" cursor
+set cul
+
+" search hightlight
+set hlsearch
+highlight Search ctermbg=Yellow ctermfg=Black
+nnoremap <Leader>/ :nohl<CR>
+
+" show file name always in status line
+set laststatus=2
+
+" line numbers
+set number relativenumber
+set numberwidth=5
+
+" sensible stuff
 set backspace=2
 set nobackup
 set nowritebackup
@@ -52,11 +93,12 @@ set noswapfile
 set splitbelow
 set splitright
 set equalalways
+set hidden
 
 " ruler
 set ruler
-set textwidth=80
-set colorcolumn=+1
+set colorcolumn=81
+set colorcolumn+=101
 
 " indenting
 set autoindent
@@ -72,18 +114,38 @@ set expandtab
 set spelllang=en_gb
 set complete+=kspell
 
-" file specific
-  au BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd BufRead,BufNewFile *.md setlocal wrap
-  autocmd BufRead,BufNewFile *.md setlocal spell | set wrap
+" wild menu?
+set wildmenu
+set wildmode=list:longest,full
 
-" spelling for filetypes
-  autocmd FileType gitcommit setlocal spell
+" tab complete only the current buffer and tags
+set complete=.,t
+" tab complete also tries ALE
+set omnifunc=ale#completion#OmniFunc
+
+" file specific
+
+" markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal colorcolumn=81
+autocmd BufRead,BufNewFile *.md setlocal wrap
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+" git commit message
+autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal wrap
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal colorcolumn=73
+autocmd FileType gitcommit setlocal colorcolumn+=51
 
 " netrw
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_localrmdir='rm -r'
+
+" vimtest
+let test#strategy = "vimterminal"
+let test#enabled_runners = ["ruby#rspec"]
 
 " leader is space
 let mapleader = " "
@@ -94,15 +156,15 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-test run with bundler
-let test#ruby#rspec#executable = 'bundle exec rspec'
-
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <Leader>gt :TestVisit<CR>
+nnoremap <silent> <Leader>L :TestLastFailures<CR>
+
+command! TestLastFailures execute 'TestLast --only-failures'
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -110,19 +172,24 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" close quickfix windoew
-nnoremap . :cclose<cr>
+" Quicker window zooms
+nnoremap <C-\> <C-w>\|
+nnoremap <C-_> <C-w>=
+
+" Quicker closing
+noremap <C-c> <C-w>c
 
 " ALE
 let g:ale_lint_on_save =  0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
-" let g:ale_lint_delay = 2000
+let g:ale_lint_delay = 500
+let g:ale_lint_on_text_changed = 'always'
 
 " ruby linitng
 let g:ale_linters = {
-\   'ruby': ['standardrb'],
+\   'ruby': ['standardrb', 'solargraph'],
 \}
 
 " white space fixing
@@ -131,20 +198,26 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
+" remap goto definition to ALE
+nnoremap gd :ALEGoToDefinition<CR>
+
+" source it
+command! Src execute 'source ~/src/dotfiles/vim/vimrc'
+
 " I want to use 'ag' not 'grep'
 set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
 
 " Find is my command to find something, put it in the quickfix and redraw
-command! -nargs=+ Find execute 'silent grep! <args>' | copen 25| redraw!
+command! -nargs=+ Find execute 'silent grep! <args>' | botright copen 20| redraw!
 
-"start a search query by pressing \
-nnoremap \ :Find<space>
+" F to search content
+nnoremap F :Find<space>
 
-"search for word under cursor by pressing |
-nnoremap \| :Find "\b<C-R><C-W>\b"<cr>
+" f to search files
+nnoremap f :Files<cr>
 
 " Use ag in fzf for listing files. Lightning fast and respects .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 
-" crtl-p search files
-nnoremap ; :Files<cr>
+" rails helpers
+nnoremap <Leader>rr :botright term++noclose<cr>bundle exec rails routes<cr>exit<cr>
