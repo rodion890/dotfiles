@@ -2,3 +2,9 @@ Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/work_ed25519
+Host *.gitlab.com
+  IdentityFile ~/.ssh/gitlab
+Host *.github.com
+  IdentityFile ~/.ssh/mec_rsa
+Host *.fortrabbit.com
+  IdentityFile ~/.ssh/mec_rsa
