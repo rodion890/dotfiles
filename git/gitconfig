@@ -16,8 +16,10 @@
   fp = push --force-with-lease
   check = checkout
   staged = diff --staged
+  unstage = restore --staged .
   intent = add --intent-to-add .
   patch = git add -p .
+  stashed = stash list --color --oneline
 [diff]
   tool = vim
 [filter "lfs"]
