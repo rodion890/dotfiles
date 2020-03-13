@@ -8,21 +8,25 @@ endif
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-fugitive'
-Plug 'crusoexia/vim-monokai'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-endwise'
 Plug 'Yggdroot/indentLine'
 Plug 'janko/vim-test'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'
+Plug 'sainnhe/edge'
+Plug 'freitass/todo.txt-vim'
+Plug 'junegunn/goyo.vim'
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
+" encoding
 set encoding=utf-8
 
 " theme
-colorscheme monokai
+set background=dark
+let g:edge_disable_italic_comment = 1
+colorscheme edge
 
 " Don't try to be vi compatible
 set nocompatible
