@@ -6,5 +6,5 @@ Host *.gitlab.com
   IdentityFile ~/.ssh/gitlab
 Host *.github.com
   IdentityFile ~/.ssh/mec_rsa
-Host *.fortrabbit.com
+Host *.fortrabbit.com, *.frbit.com
   IdentityFile ~/.ssh/mec_rsa
