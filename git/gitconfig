@@ -15,11 +15,14 @@
   stat = status
   fp = push --force-with-lease
   check = checkout
+  ch = checkout
   staged = diff --staged
   unstage = restore --staged .
   intent = add --intent-to-add .
   patch = git add -p .
   stashed = stash list --color --oneline
+  sw = switch
+  br = branch
 [diff]
   tool = vim
 [filter "lfs"]

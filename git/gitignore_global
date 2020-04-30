@@ -18,3 +18,4 @@ Thumbs.db
 .rspec-local
 .tags
 tags
+.byebug_history
