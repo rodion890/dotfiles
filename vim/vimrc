@@ -8,16 +8,17 @@ endif
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-rails'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'tpope/vim-endwise'
 Plug 'Yggdroot/indentLine'
 Plug 'janko/vim-test'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sainnhe/edge'
-Plug 'freitass/todo.txt-vim'
-Plug 'junegunn/goyo.vim'
 Plug 'ajh17/VimCompletesMe'
+Plug 'preservim/nerdtree'
+Plug 'neomake/neomake'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 " encoding
@@ -34,48 +35,12 @@ set nocompatible
 " syntax highlighting
 syntax on
 
-" cursor
-set cul
+" cursor line
+"set cul
 
 " search hightlight
 set hlsearch
-highlight Search ctermbg=Yellow ctermfg=Black
-nnoremap <Leader>/ :nohl<CR>
-
-" show file name always in status line
-set laststatus=2
-
-" line numbers
-set number relativenumber
-set numberwidth=5
-
-" sensible stuff
-set backspace=2
-set nobackup
-set nowritebackup
-set noswapfile
-call plug#end()
-
-" encoding
-set encoding=utf-8
-
-" theme
-set background=dark
-let g:edge_disable_italic_comment = 1
-colorscheme edge
-
-" Don't try to be vi compatible
-set nocompatible
-
-" syntax highlighting
-syntax on
-
-" cursor
-set cul
-
-" search hightlight
-set hlsearch
-highlight Search ctermbg=Yellow ctermfg=Black
+highlight Search ctermbg=Yellow ctermfg=235
 nnoremap <Leader>/ :nohl<CR>
 
 " show file name always in status line
@@ -97,8 +62,8 @@ set hidden
 
 " ruler
 set ruler
-set colorcolumn=81
-set colorcolumn+=101
+"set colorcolumn=81
+"set colorcolumn+=101
 
 " indenting
 set autoindent
@@ -112,49 +77,61 @@ set expandtab
 
 " spelling
 set spelllang=en_gb
-set complete+=kspell
 
 " wild menu?
 set wildmenu
 set wildmode=list:longest,full
 
-" tab complete only the current buffer and tags
-set complete=.,t
-" tab complete also tries ALE
-set omnifunc=ale#completion#OmniFunc
+" tab complete only the current buffer, open buffers, tags and spelling (when
+" spelling is enabled)
+set complete=.,t,kspell
 
 " file specific
-
 " markdown
+augroup markdown
+autocmd!
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufRead,BufNewFile *.md setlocal colorcolumn=81
 autocmd BufRead,BufNewFile *.md setlocal wrap
 autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
 
 " git commit message
+augroup gitcommit
+autocmd!
 autocmd FileType gitcommit setlocal spell
 autocmd FileType gitcommit setlocal wrap
 autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal colorcolumn=73
 autocmd FileType gitcommit setlocal colorcolumn+=51
+augroup END
 
 " netrw
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
-let g:netrw_localrmdir='rm -r'
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 25
+
+" Nerd Tree
+nnoremap <silent> ` :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " vimtest
 let test#strategy = "vimterminal"
+if has('nvim')
+  let test#strategy = "neovim"
+endif
 let test#enabled_runners = ["ruby#rspec"]
+let test#ruby#use_binstubs = 0
 
 " leader is space
 let mapleader = " "
 
 " don't use arrow keys
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
@@ -180,16 +157,16 @@ nnoremap <C-_> <C-w>=
 noremap <C-c> <C-w>c
 
 " ALE
-let g:ale_lint_on_save =  0
-let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save =  1
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
 let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 500
-let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_text_changed = 0
 
 " ruby linitng
 let g:ale_linters = {
-\   'ruby': ['standardrb', 'solargraph'],
+\   'ruby': ['standardrb'],
 \}
 
 " white space fixing
@@ -197,9 +174,6 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
-
-" remap goto definition to ALE
-nnoremap gd :ALEGoToDefinition<CR>
 
 " source it
 command! Src execute 'source ~/src/dotfiles/vim/vimrc'
@@ -221,3 +195,28 @@ let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden
 
 " rails helpers
 nnoremap <Leader>rr :botright term++noclose<cr>bundle exec rails routes<cr>exit<cr>
+
+" Neomake
+
+  call neomake#configure#automake({
+  \ 'TextChanged': {},
+  \ 'InsertLeave': {},
+  \ 'BufWritePost': {'delay': 0},
+  \ 'BufWinEnter': {},
+  \ }, 500)
+
+let g:neomake_ruby_standardrb_maker = {
+        \ 'exe': 'bundle',
+        \ 'args': ['exec', 'standardrb', '--format', 'emacs', '--force-exclusion', '--display-cop-names'],
+        \ 'errorformat': '%f:%l:%c: %t: %m,%E%f:%l: %m',
+        \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess'),
+        \ 'output_stream': 'stdout',
+        \ }
+let g:neomake_ruby_enabled_makers = ['standardrb']
+
+" whitespace trimmer
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:better_whitespace_ctermcolor='lightgray'
+:set lazyredraw
