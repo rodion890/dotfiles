@@ -7,18 +7,17 @@ endif
 
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-rails'
-"Plug 'dense-analysis/ale'
-Plug 'tpope/vim-endwise'
-Plug 'Yggdroot/indentLine'
-Plug 'janko/vim-test'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'sainnhe/edge'
-Plug 'ajh17/VimCompletesMe'
-Plug 'preservim/nerdtree'
-Plug 'neomake/neomake'
-Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tpope/vim-endwise'
+" Plug 'Yggdroot/indentLine'
+  Plug 'janko/vim-test'
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'sainnhe/edge'
+  Plug 'ajh17/VimCompletesMe'
+  Plug 'preservim/nerdtree'
+  Plug 'neomake/neomake'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tpope/vim-rails'
 call plug#end()
 
 " encoding
@@ -29,26 +28,9 @@ set background=dark
 let g:edge_disable_italic_comment = 1
 colorscheme edge
 
-" Don't try to be vi compatible
-set nocompatible
-
-" syntax highlighting
-syntax on
-
-" cursor line
-"set cul
-
 " search hightlight
 set hlsearch
 highlight Search ctermbg=Yellow ctermfg=235
-nnoremap <Leader>/ :nohl<CR>
-
-" show file name always in status line
-set laststatus=2
-
-" line numbers
-set number relativenumber
-set numberwidth=5
 
 " sensible stuff
 set backspace=2
@@ -60,10 +42,10 @@ set splitright
 set equalalways
 set hidden
 
-" ruler
-set ruler
-"set colorcolumn=81
-"set colorcolumn+=101
+" show file name always in status line
+set laststatus=2
+
+" leader is space
 
 " indenting
 set autoindent
@@ -74,6 +56,21 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
+let mapleader = " "
+
+" ruler
+set ruler
+set colorcolumn=81
+set colorcolumn+=101
+
+" cursor line
+set cul
+
+" ruby syntax only runs well with the old regex engine
+set regexpengine=1
+
+" line numbers
+set number relativenumber
 
 " spelling
 set spelllang=en_gb
@@ -86,46 +83,18 @@ set wildmode=list:longest,full
 " spelling is enabled)
 set complete=.,t,kspell
 
-" file specific
-" markdown
-augroup markdown
-autocmd!
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-autocmd BufRead,BufNewFile *.md setlocal colorcolumn=81
-autocmd BufRead,BufNewFile *.md setlocal wrap
-autocmd BufRead,BufNewFile *.md setlocal spell
-augroup END
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
-" git commit message
-augroup gitcommit
-autocmd!
-autocmd FileType gitcommit setlocal spell
-autocmd FileType gitcommit setlocal wrap
-autocmd FileType gitcommit setlocal textwidth=72
-autocmd FileType gitcommit setlocal colorcolumn=73
-autocmd FileType gitcommit setlocal colorcolumn+=51
-augroup END
+" Quicker closing
+noremap <C-c> <C-w>c
 
-" netrw
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 2
-let g:netrw_winsize = 25
-
-" Nerd Tree
-nnoremap <silent> ` :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
-" vimtest
-let test#strategy = "vimterminal"
-if has('nvim')
-  let test#strategy = "neovim"
-endif
-let test#enabled_runners = ["ruby#rspec"]
-let test#ruby#use_binstubs = 0
-
-" leader is space
-let mapleader = " "
+" Quicker window zooms
+nnoremap <C-\> <C-w>\|
+nnoremap <C-_> <C-w>=
 
 " don't use arrow keys
 " nnoremap <Left> :echoe "Use h"<CR>
@@ -133,50 +102,8 @@ let mapleader = " "
 " nnoremap <Up> :echoe "Use k"<CR>
 " nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
-nnoremap <silent> <Leader>L :TestLastFailures<CR>
-
-command! TestLastFailures execute 'TestLast --only-failures'
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" Quicker window zooms
-nnoremap <C-\> <C-w>\|
-nnoremap <C-_> <C-w>=
-
-" Quicker closing
-noremap <C-c> <C-w>c
-
-" ALE
-let g:ale_lint_on_save =  1
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-let g:ale_linters_explicit = 1
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 0
-
-" ruby linitng
-let g:ale_linters = {
-\   'ruby': ['standardrb'],
-\}
-
-" white space fixing
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-
 " source it
-command! Src execute 'source ~/src/dotfiles/vim/vimrc'
+command! Src execute 'source ~/.vimrc'
 
 " I want to use 'ag' not 'grep'
 set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
@@ -193,8 +120,23 @@ nnoremap f :Files<cr>
 " Use ag in fzf for listing files. Lightning fast and respects .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 
-" rails helpers
-nnoremap <Leader>rr :botright term++noclose<cr>bundle exec rails routes<cr>exit<cr>
+" vim-test
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <Leader>gt :TestVisit<CR>
+nnoremap <silent> <Leader>L :TestLastFailures<CR>
+
+command! TestLastFailures execute 'TestLast --only-failures'
+
+let test#strategy = "vimterminal"
+let test#enabled_runners = ["ruby#rspec"]
+let test#ruby#use_binstubs = 0
+
+" Nerd Tree
+nnoremap <silent> ` :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " Neomake
 
@@ -218,5 +160,24 @@ let g:neomake_ruby_enabled_makers = ['standardrb']
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
-let g:better_whitespace_ctermcolor='lightgray'
-:set lazyredraw
+let g:better_whitespace_ctermcolor='magenta'
+
+" file specific
+" markdown
+augroup markdown
+autocmd!
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal colorcolumn=81
+autocmd BufRead,BufNewFile *.md setlocal wrap
+autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
+
+" git commit message
+augroup gitcommit
+autocmd!
+autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal wrap
+autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal colorcolumn=73
+autocmd FileType gitcommit setlocal colorcolumn+=51
+augroup END
