@@ -139,13 +139,9 @@ nnoremap <silent> ` :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " Neomake
-
-  call neomake#configure#automake({
-  \ 'TextChanged': {},
-  \ 'InsertLeave': {},
-  \ 'BufWritePost': {'delay': 0},
-  \ 'BufWinEnter': {},
-  \ }, 500)
+" run on normal mode, read buffer, write buffer, insert mode changes, 500 ms
+" delay
+call neomake#configure#automake('nrwi', 500)
 
 let g:neomake_ruby_standardrb_maker = {
         \ 'exe': 'bundle',
