@@ -82,9 +82,10 @@ set spelllang=en_gb
 set wildmenu
 set wildmode=list:longest,full
 
-" tab complete only the current buffer, open buffers, tags and spelling (when
+" tab complete only the current buffer, included files, buffer list, other
+" unloaded buffers, window, open buffers, tags and spelling (when
 " spelling is enabled)
-set complete=.,t,kspell
+set complete=.,i,b,w,u,t,kspell
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
