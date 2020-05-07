@@ -114,11 +114,14 @@ set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
 " Find is my command to find something, put it in the quickfix and redraw
 command! -nargs=+ Find execute 'silent grep! <args>' | botright copen 20| redraw!
 
+" b for buffer search
+nnoremap <leader>b :Buffers<cr>
+
 " F to search content
-nnoremap F :Find<space>
+nnoremap <leader>F :Find<space>
 
 " f to search files
-nnoremap f :Files<cr>
+nnoremap <leader>f :Files<cr>
 
 " Use ag in fzf for listing files. Lightning fast and respects .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
