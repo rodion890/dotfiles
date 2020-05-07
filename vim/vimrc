@@ -45,6 +45,7 @@ set hidden
 set laststatus=2
 
 " leader is space
+let mapleader = " "
 
 " indenting
 set autoindent
@@ -55,7 +56,6 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-let mapleader = " "
 
 " ruler
 set ruler
