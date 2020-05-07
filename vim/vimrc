@@ -8,7 +8,6 @@ endif
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-endwise'
-" Plug 'Yggdroot/indentLine'
   Plug 'janko/vim-test'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
@@ -78,7 +77,10 @@ set number relativenumber
 " spelling
 set spelllang=en_gb
 
-" wild menu?
+" system clipboard
+set clipboard=unnamed
+
+" wild menu
 set wildmenu
 set wildmode=list:longest,full
 
