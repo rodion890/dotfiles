@@ -8,12 +8,10 @@ source ~/.zsh/utilities.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/async.zsh
 source ~/.zsh/pure.zsh
-
-# add external files
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# comment to have prompt inline
-# prompt_newline='%666v'
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
 
 # prompt
 PROMPT=" $PROMPT"
