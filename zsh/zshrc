@@ -21,3 +21,6 @@ PROMPT=" $PROMPT"
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# node 10
+export PATH="/usr/local/opt/node@10/bin:$PATH"
