@@ -20,7 +20,6 @@ ln -sf ~/src/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
 ln -sf ~/src/dotfiles/ssh/config ~/.ssh/config
 
 # vim
-ln -sfh ~/src/dotfiles/vim/pack/mec/start ~/.vim/pack/mec/start
 ln -sf ~/src/dotfiles/vim/vimrc ~/.vimrc
 
 # ruby
