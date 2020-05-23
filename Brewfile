@@ -1,7 +1,6 @@
 # zsh
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
-brew 'zsh-completions'
 
 # vim
 brew 'vim'
