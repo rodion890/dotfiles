@@ -3,12 +3,13 @@
 - install [homebrew](https://brew.sh/) `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 - create `~/src` directory
 - clone this repo into `~/src/dotfiles`
-- create ssh key for work:
+- clone [pure prompt](https://github.com/sindresorhus/pure) into `~/src/pure`
+- create ssh key for work: 
   `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/work_ed25519 -C "me@work.com"`
   - add a passphrase
 
+- create symlinks with `~/src/dotfiles/link.sh`
 - run `brew bundle` from your home directory
-- create symlinks with `~/src/dotfiles/links.sh`
 - add the ssh key to the keychain `ssh-add -K ~/.ssh/work`
 - change shell to zsh with `chsh` setting to `/bin/zsh` or the path to
 `zsh`
