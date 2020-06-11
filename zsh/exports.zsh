@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$HOME/Library/Python/3.6/bin:/usr/local/sbin:/usr/local/opt/openssl/bin:/usr/local/opt/node@10/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$HOME/Library/Python/3.6/bin:/usr/local/sbin:/usr/local/opt/openssl/bin:/usr/local/opt/node@10/bin:/usr/local/opt/redis@4.0/bin:$PATH
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color

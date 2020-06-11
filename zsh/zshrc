@@ -1,24 +1,28 @@
-# add all the sub files
-source ~/.zsh/options.zsh
-source ~/.zsh/exports.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/bindkeys.zsh
-source ~/.zsh/utilities.zsh
-source ~/.zsh/history.zsh
-source ~/.zsh/async.zsh
-source ~/.zsh/pure.zsh
+# add pure to the laod path
+fpath+=$HOME/src/pure
+
+# add all the local bits
+source ~/src/dotfiles/zsh/options.zsh
+source ~/src/dotfiles/zsh/exports.zsh
+source ~/src/dotfiles/zsh/completion.zsh
+source ~/src/dotfiles/zsh/aliases.zsh
+source ~/src/dotfiles/zsh/bindkeys.zsh
+source ~/src/dotfiles/zsh/utilities.zsh
+source ~/src/dotfiles/zsh/history.zsh
+#source ~/src/dotfiles/zsh/async.zsh
+#source ~/src/dotfiles/zsh/pure.zsh
+#
+# syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# turn on git stash status
-zstyle :prompt:pure:git:stash show yes
-
-# prompt
-PROMPT=" $PROMPT"
 
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-# node 10
-export PATH="/usr/local/opt/node@10/bin:$PATH"
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+
+# initalise pure prompt
+autoload -U promptinit; promptinit
+prompt pure
+

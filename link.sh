@@ -3,7 +3,6 @@
 # assumes dotfiles are always at ~/src/dotfiles
 
 # zsh
-ln -sfh ~/src/dotfiles/zsh ~/.zsh
 ln -sf ~/src/dotfiles/zsh/zshrc ~/.zshrc
 
 # git
