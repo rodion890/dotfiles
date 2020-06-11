@@ -18,4 +18,5 @@ Thumbs.db
 .rspec-local
 .tags
 tags
+tags.lock
 .byebug_history
