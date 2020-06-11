@@ -5,6 +5,10 @@ brew 'zsh-syntax-highlighting'
 # vim
 brew 'vim'
 
+# tags
+tap 'universal-ctags/universal-ctags/universal-ctags'
+brew 'universal-tags'
+
 # gpg
 brew 'gpg'
 
