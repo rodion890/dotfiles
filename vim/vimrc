@@ -18,6 +18,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-rails'
   Plug 'airblade/vim-gitgutter'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'airblade/vim-localorie'
 call plug#end()
 
 " encoding
@@ -32,7 +34,7 @@ colorscheme edge
 set hlsearch
 highlight Search ctermbg=Yellow ctermfg=235
 
-" sensible stuff
+" basic stuff
 set backspace=2
 set nobackup
 set nowritebackup
@@ -40,7 +42,8 @@ set noswapfile
 set splitbelow
 set splitright
 set equalalways
-set hidden
+"set hidden
+set lazyredraw
 
 " show file name always in status line
 set laststatus=2
@@ -51,6 +54,9 @@ let mapleader = " "
 " indenting
 set autoindent
 set smartindent
+
+"folding
+" set foldmethod=indent
 
 " whitespace
 set tabstop=2
@@ -73,13 +79,13 @@ set cul
 set regexpengine=1
 
 " line numbers
-set number relativenumber
+set number
 
 " spelling
 set spelllang=en_gb
 
 " system clipboard
-set clipboard=unnamed
+"set clipboard=unnamed
 
 " wild menu
 set wildmenu
@@ -104,10 +110,10 @@ nnoremap <C-\> <C-w>\|
 nnoremap <C-_> <C-w>=
 
 " don't use arrow keys
- nnoremap <Left> :echoe "Use h"<CR>
- nnoremap <Right> :echoe "Use l"<CR>
- nnoremap <Up> :echoe "Use k"<CR>
- nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
 " source it
 command! Src execute 'source ~/.vimrc'
@@ -141,12 +147,16 @@ nnoremap <silent> <Leader>L :TestLastFailures<CR>
 command! TestLastFailures execute 'TestLast --only-failures'
 
 let test#strategy = "vimterminal"
-let test#enabled_runners = ["ruby#rspec"]
+let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
 let test#ruby#use_binstubs = 0
 
 " Nerd Tree
 nnoremap <silent> ` :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeWinSize=40
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
 
 " Neomake
 " run on normal mode, read buffer, write buffer, insert mode changes, 500 ms
@@ -204,3 +214,10 @@ autocmd FileType gitcommit setlocal textwidth=72
 autocmd FileType gitcommit setlocal colorcolumn=73
 autocmd FileType gitcommit setlocal colorcolumn+=51
 augroup END
+
+" localorie switches to quickfix when called
+let g:localorie = {
+    \ 'switch':    1
+    \ }
+nnoremap <silent> <leader>lt :call localorie#translate()<CR>
+nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
