@@ -118,6 +118,9 @@ nnoremap <Down> :echoe "Use j"<CR>
 " source it
 command! Src execute 'source ~/.vimrc'
 
+" configure fzf
+let g:fzf_layout = { 'down': '50%' }
+
 " I want to use 'ag' not 'grep'
 set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
 
