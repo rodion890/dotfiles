@@ -3,7 +3,7 @@
   name = meyric
   signkey = 0xC3EDAF09BECD20E5
 [core]
-  pager = less -SMR
+  pager = less -MS
   editor = vim
   excludesfile = ~/.gitignore_global
 [alias]
