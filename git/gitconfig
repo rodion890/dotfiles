@@ -7,7 +7,8 @@
   editor = vim
   excludesfile = ~/.gitignore_global
 [alias]
-  lg = log --color --oneline
+  hist = log --format='%C(auto)----%n %h %s %n %an <%ae>:%Cblue %ar' -p --compact-summary
+  lg = log --format='%h %s %an'
   lgg = log --color --oneline --graph
   logsig = log --show-signature -1
   fixup = commit --fixup
@@ -23,8 +24,9 @@
   stashed = stash list --color --oneline
   sw = switch
   br = branch
+  aa = add . -p
 [diff]
-  tool = vim
+  tool = vimdiff
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -35,3 +37,5 @@
   gpgsign = true
 [rebase]
   autosquash = true
+[pull]
+	rebase = false
