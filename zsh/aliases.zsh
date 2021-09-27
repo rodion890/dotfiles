@@ -9,3 +9,6 @@ alias clr='clear'
 ## bundler
 alias be='bundle exec'
 alias bi='bundle install'
+
+## git
+alias g='git'
