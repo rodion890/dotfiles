@@ -221,8 +221,6 @@ autocmd FileType gitcommit setlocal colorcolumn+=51
 augroup END
 
 " localorie switches to quickfix when called
-let g:localorie = {
-    \ 'switch':    1
-    \ }
+let g:localorie = { 'switch': 1 }
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
