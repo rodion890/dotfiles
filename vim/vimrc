@@ -14,12 +14,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'sainnhe/edge'
   Plug 'ajh17/VimCompletesMe'
   Plug 'preservim/nerdtree'
-  Plug 'neomake/neomake'
-  Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-rails'
   Plug 'airblade/vim-gitgutter'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'airblade/vim-localorie'
+  Plug 'dense-analysis/ale'
 call plug#end()
 
 " encoding
@@ -167,42 +166,38 @@ let NERDTreeWinSize=40
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
-" Neomake
-" run on normal mode, read buffer, write buffer, insert mode changes, 500 ms
-" delay
-call neomake#configure#automake('nrwi', 500)
+" Ale
+" I think this sets ale as a omnicompletion source, not sure so testing this
+" one.
+set omnifunc=ale#completion#OmniFunc
 
-let g:neomake_ruby_standardrb_maker = {
-        \ 'exe': 'bundle',
-        \ 'args': ['exec', 'standardrb', '--format', 'emacs', '--force-exclusion', '--display-cop-names'],
-        \ 'errorformat': '%f:%l:%c: %t: %m,%E%f:%l: %m',
-        \ 'postprocess': function('neomake#makers#ft#ruby#RubocopEntryProcess'),
-        \ 'output_stream': 'stdout',
-        \ }
-let g:neomake_ruby_enabled_makers = ['standardrb']
+" only run linters I tell you to
+let g:ale_linters_explicit = 1
 
-let g:neomake_error_sign = {
-    \ 'text': '>>',
-    \ 'texthl': 'NeomakeErrorSign',
-    \ }
-let g:neomake_warning_sign = {
-    \   'text': '--',
-    \   'texthl': 'NeomakeWarningSign',
-    \ }
-let g:neomake_message_sign = {
-    \   'text': '--',
-    \   'texthl': 'NeomakeMessageSign',
-    \ }
-let g:neomake_info_sign = {
-    \ 'text': '--',
-    \ 'texthl': 'NeomakeInfoSign'
-    \ }
+" linters
+let g:ale_linters = {
+\   'markdown': ['cspell'],
+\   'ruby': ['rubocop', 'standardrb', 'solargraph', 'cspell'],
+\   'gitcommit': ['gitlint', 'cspell'],
+\}
 
-" whitespace trimmer
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:better_whitespace_ctermcolor='black'
+" the only fixer I want in vim is trim whitepace
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+" and fix on save please
+let g:ale_fix_on_save = 1
+
+" love that gutter
+let g:ale_sign_column_always = 1
+
+" we usually want the bundled version of Rubocop and Standardrb
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_standardrb_executable = 'bundle'
+
+" I think this turns off the underlining of errors and warnings
+let g:ale_set_highlights = 0
 
 " file specific
 " markdown
