@@ -80,6 +80,7 @@ set signcolumn=yes
 set cul
 
 " ruby syntax only runs well with the old regex engine
+" the new one makes vim so slow it is useless
 set regexpengine=1
 
 " line numbers
