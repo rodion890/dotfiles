@@ -8,3 +8,5 @@ Host *.github.com
   IdentityFile ~/.ssh/mec_rsa
 Host *.fortrabbit.com, *.frbit.com
   IdentityFile ~/.ssh/mec_rsa
+Host 10.0.81.100
+  IdentityFile ~/.ssh/unraid_borg
