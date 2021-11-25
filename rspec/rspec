@@ -1,0 +1,6 @@
+<% if ARGV.length > 0 %>
+--format documentation
+<% else %>
+--format progress
+<% end %>
+--no-profile
