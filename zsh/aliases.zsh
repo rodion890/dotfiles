@@ -12,3 +12,6 @@ alias bi='bundle install'
 
 ## git
 alias g='git'
+
+## vim
+alias v='vim'
