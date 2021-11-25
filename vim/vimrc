@@ -26,9 +26,14 @@ call plug#end()
 set encoding=utf-8
 
 " theme
-set background=dark
-let g:edge_disable_italic_comment = 1
 colorscheme edge
+set background=dark
+let g:edge_disable_italic_comment = 0
+let g:edge_enable_italic = 1
+
+" quickly change from dark to light modes
+command! LightMode set background=light
+command! DarkMode set background=dark
 
 " search hightlight
 set hlsearch
