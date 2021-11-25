@@ -124,7 +124,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 command! Src execute 'source ~/.vimrc'
 
 " configure fzf
-let g:fzf_layout = { 'down': '50%' }
+let g:fzf_layout = { 'down': '25%' }
 
 " I want to use 'ag' not 'grep'
 set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
@@ -157,13 +157,14 @@ command! TestLastFailures execute 'TestLast --only-failures'
 let test#strategy = 'vimterminal'
 let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
 let test#ruby#use_binstubs = 1
-let test#vim#term_position = "below"
+let test#vim#term_position = 'botright 30'
 
 " Nerd Tree
 nnoremap <silent> ` :NERDTreeToggle<CR>
+nnoremap <silent> - :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeWinSize=40
+let NERDTreeWinSize=60
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
