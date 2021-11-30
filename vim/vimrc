@@ -180,6 +180,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'markdown': ['cspell'],
 \   'ruby': ['rubocop', 'standardrb', 'solargraph', 'cspell'],
+\   'haml': ['hamllint', 'rubocop'],
 \   'gitcommit': ['gitlint', 'cspell'],
 \}
 
@@ -194,9 +195,11 @@ let g:ale_fix_on_save = 1
 " love that gutter
 let g:ale_sign_column_always = 1
 
-" we usually want the bundled version of Rubocop and Standardrb
+" we usually want the bundled version of Ruby linters
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_standardrb_executable = 'bundle'
+let g:ale_haml_hamllint_executable = 'bundle'
+let g:ale_haml_rubocop_executable = 'bundle'
 
 " I think this turns off the underlining of errors and warnings
 let g:ale_set_highlights = 0
