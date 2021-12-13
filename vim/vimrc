@@ -156,7 +156,7 @@ command! TestLastFailures execute 'TestLast --only-failures'
 
 let test#strategy = 'vimterminal'
 let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
-let test#ruby#use_binstubs = 1
+let test#ruby#use_binstubs = 0
 let test#vim#term_position = 'botright 30'
 
 " Nerd Tree
