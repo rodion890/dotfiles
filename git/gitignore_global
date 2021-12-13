@@ -20,7 +20,7 @@ Thumbs.db
 tags
 tags.lock
 .byebug_history
-
+tags.temp
 # environment files #
 #####################
 .env.*.local
