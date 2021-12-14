@@ -5,6 +5,9 @@ brew 'zsh-syntax-highlighting'
 # vim
 brew 'vim'
 
+# direnv
+brew 'direnv'
+
 # tags
 tap 'universal-ctags/universal-ctags/universal-ctags'
 brew 'universal-tags'

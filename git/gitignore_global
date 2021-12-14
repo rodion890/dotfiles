@@ -19,8 +19,13 @@ Thumbs.db
 .tags
 tags
 tags.lock
-.byebug_history
 tags.temp
+.byebug_history
+
+# direnv #
+##########
+.envrc
+
 # environment files #
 #####################
 .env.*.local

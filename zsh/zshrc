@@ -26,3 +26,5 @@ zstyle :prompt:pure:git:stash show yes
 autoload -U promptinit; promptinit
 prompt pure
 
+# direnv
+eval "$(direnv hook zsh)"
