@@ -15,3 +15,6 @@ alias g='git'
 
 ## vim
 alias v='vim'
+
+## rails
+alias r='rails'
