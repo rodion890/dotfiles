@@ -25,5 +25,8 @@ ln -sf ~/src/dotfiles/vim/vimrc ~/.vimrc
 ln -sf ~/src/dotfiles/ruby/ruby-version ~/.ruby-version
 ln -sf ~/src/dotfiles/ruby/irbrc ~/.irbrc
 
+# node
+ln -sf ~/src/dotfiles/node/node-version ~/.node-version
+
 # rspec
 ln -sf ~/src/dotfiles/rspec/rspec ~/.rspec
