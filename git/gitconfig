@@ -25,6 +25,9 @@
   sw = switch
   br = branch
   aa = add . -p
+  pr = restore . -p
+  pa = add . -p
+  cherry = cherry-pick
 [diff]
   tool = vimdiff
 [filter "lfs"]
