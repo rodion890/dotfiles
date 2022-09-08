@@ -20,7 +20,9 @@ Thumbs.db
 tags
 tags.lock
 tags.temp
+tags.temp.tmp
 .byebug_history
+.solargraph_rails.rb
 
 # direnv #
 ##########
