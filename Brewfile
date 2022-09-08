@@ -9,7 +9,6 @@ brew 'vim'
 brew 'direnv'
 
 # tags
-tap 'universal-ctags/universal-ctags/universal-ctags'
 brew 'universal-tags'
 
 # gpg
@@ -18,9 +17,18 @@ brew 'gpg'
 # git
 brew 'git'
 
+# GitHub
+brew 'gh'
+
 # ruby
 brew 'chruby'
 brew 'ruby-install'
+
+# node
+# https://github.com/tkareine/chnode
+brew tap tkareine/chnode
+brew install tkareine/chnode/chnode
+brew install node-build
 
 # php
 brew 'composer'
