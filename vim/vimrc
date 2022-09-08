@@ -25,10 +25,11 @@ call plug#end()
 set encoding=utf-8
 
 " theme
-colorscheme edge
 set background=dark
-let g:edge_disable_italic_comment = 0
+let g:edge_better_performance = 1
 let g:edge_enable_italic = 1
+let g:edge_disable_italic_comment = 0
+colorscheme edge
 
 " quickly change from dark to light modes
 command! LightMode set background=light
@@ -48,6 +49,8 @@ set splitright
 set equalalways
 "set hidden
 set lazyredraw
+set confirm
+set cmdheight=2
 
 " show file name always in status line
 set laststatus=2
@@ -120,6 +123,9 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" don't know what Ex mode is
+nnoremap gQ :echoe "Don't know what Ex mode is"<CR>
+
 " source it
 command! Src execute 'source ~/.vimrc'
 
@@ -127,7 +133,7 @@ command! Src execute 'source ~/.vimrc'
 let g:fzf_layout = { 'down': '25%' }
 
 " I want to use 'ag' not 'grep'
-set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
+set grepprg=ag\ --nogroup\ --silent\ --nocolor\ --column\ --vimgrep
 
 " Find is my command to find something, put it in the quickfix and redraw
 command! -nargs=+ Find execute 'silent grep! <args>' | botright copen 20| redraw!
@@ -157,21 +163,24 @@ command! TestLastFailures execute 'TestLast --only-failures'
 let test#strategy = 'vimterminal'
 let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
 let test#ruby#use_binstubs = 0
-let test#vim#term_position = 'botright 30'
+let test#vim#term_position = 'botright 20'
 
 " Nerd Tree
 nnoremap <silent> ` :NERDTreeToggle<CR>
 nnoremap <silent> - :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeWinSize=60
+let NERDTreeWinSize=40
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 
 " Ale
+let g:ale_completion_enabled = 1
+
 " I think this sets ale as a omnicompletion source, not sure so testing this
 " one.
 set omnifunc=ale#completion#OmniFunc
+
 
 " only run linters I tell you to
 let g:ale_linters_explicit = 1
@@ -179,7 +188,7 @@ let g:ale_linters_explicit = 1
 " linters
 let g:ale_linters = {
 \   'markdown': ['cspell'],
-\   'ruby': ['rubocop', 'standardrb', 'solargraph', 'cspell'],
+\   'ruby': ['standardrb', 'solargraph', 'cspell'],
 \   'haml': ['hamllint', 'rubocop'],
 \   'gitcommit': ['gitlint', 'cspell'],
 \}
@@ -200,6 +209,11 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_standardrb_executable = 'bundle'
 let g:ale_haml_hamllint_executable = 'bundle'
 let g:ale_haml_rubocop_executable = 'bundle'
+
+" Solargraph
+let g:ale_ruby_solargraph_executable = 'solargraph'
+let g:ale_ruby_solargraph_options = {}
+nnoremap <silent> <Leader>g :ALEGoToDefinition<CR>
 
 " I think this turns off the underlining of errors and warnings
 let g:ale_set_highlights = 0
@@ -227,3 +241,11 @@ augroup END
 let g:localorie = { 'switch': 1 }
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
+
+" git staging
+nnoremap <silent> <leader>gs :GitGutterQuickFixCurrentFile<CR> :copen 20<CR>
+nnoremap <silent> <leader>gsa :GitGutterQuickFix<CR> :copen 20<CR>
+nnoremap <silent> <leader>gg :GitGutterStageHunk<CR>
+
+" terminal in vim?
+nnoremap <silent> <leader>T :term<CR>
