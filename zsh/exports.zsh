@@ -1,11 +1,16 @@
+# exports
 export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.composer/vendor/bin:$PATH
-export PATH=$HOME/Library/Python/3.6/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=/usr/local/opt/openssl/bin:$PATH
-export PATH=/usr/local/opt/node@10/bin:$PATH
-export PATH=/usr/local/opt/redis@4.0/bin:$PATH
+
+# languages
+# python
+export PATH=$HOME/Library/Python/3.6/bin:$PATH
+
+#php
+export PATH="/usr/local/opt/php@8.0/bin:$PATH"
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
@@ -29,3 +34,15 @@ export LC_COLLATE=C
 
 # allows GPG to use Yubikey
 export GPG_TTY=$(tty)
+
+# stop brew auto updating
+export HOMEBREW_NO_AUTO_UPDATE=true
+# brew shows check not beer
+export HOMEBREW_INSTALL_BADGE=✅
+
+# try and not use my name for psql and postgres
+export PGUSER=postgres
+export USER=postgres
+
+# home borg
+export BORG_REPO=ssh://borg@10.0.81.100:2222/var/backups/borg/
