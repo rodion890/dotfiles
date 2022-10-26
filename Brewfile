@@ -1,3 +1,6 @@
+# mas - so we can install from the app store
+brew 'mas'
+
 # zsh
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
@@ -78,3 +81,7 @@ cask 'sequel-pro'
 cask 'slack'
 cask 'keybase'
 cask 'transmit'
+cask 'insomnia'
+
+# App Store
+mas 'iA writer', id: '775737590'
