@@ -1,0 +1,9 @@
+---
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: '0.2'
+dictionaryDefinitions:
+  - name: mec-words
+    path: '~/mec-cspell-words.txt'
+    addWords: true
+dictionaries:
+  - mec-words

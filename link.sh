@@ -30,3 +30,7 @@ ln -sf ~/src/dotfiles/node/node-version ~/.node-version
 
 # rspec
 ln -sf ~/src/dotfiles/rspec/rspec ~/.rspec
+
+# cspell
+ln -sf ~/src/dotfiles/cspell/cspell.config.yml ~/cspell.config.yml
+ln -sf ~/src/dotfiles/cspell/mec-cspell-words.txt ~/mec-cspell-words.txt
