@@ -11,14 +11,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'janko/vim-test'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf'
   Plug 'sainnhe/edge'
-  Plug 'ajh17/VimCompletesMe'
+  Plug 'vim-scripts/VimCompletesMe'
   Plug 'preservim/nerdtree'
   Plug 'tpope/vim-rails'
   Plug 'airblade/vim-gitgutter'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'airblade/vim-localorie'
   Plug 'dense-analysis/ale'
+  Plug 'vimwiki/vimwiki'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'vim-airline/vim-airline'
+  Plug 'mileszs/ack.vim'
 call plug#end()
 
 " encoding
@@ -26,9 +31,11 @@ set encoding=utf-8
 
 " theme
 set background=dark
+
 let g:edge_better_performance = 1
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 0
+
 colorscheme edge
 
 " quickly change from dark to light modes
@@ -50,10 +57,10 @@ set equalalways
 "set hidden
 set lazyredraw
 set confirm
-set cmdheight=2
+set cmdheight=1
 
 " show file name always in status line
-set laststatus=2
+"set laststatus=2
 
 " leader is space
 let mapleader = " "
@@ -84,7 +91,7 @@ set cul
 
 " ruby syntax only runs well with the old regex engine
 " the new one makes vim so slow it is useless
-set regexpengine=1
+"set regexpengine=1
 
 " line numbers
 set number
@@ -113,9 +120,9 @@ nnoremap <C-l> <C-w>l
 " Quicker closing
 noremap <C-c> <C-w>c
 
-" Quicker window zooms
-nnoremap <C-\> <C-w>\|
-nnoremap <C-_> <C-w>=
+" Quicker window resize
+nnoremap <C-w>> <C-=>
+nnoremap <C-w>< <C-->
 
 " don't use arrow keys
 nnoremap <Left> :echoe "Use h"<CR>
@@ -129,14 +136,20 @@ nnoremap gQ :echoe "Don't know what Ex mode is"<CR>
 " source it
 command! Src execute 'source ~/.vimrc'
 
+" configure ack.vim for search with rg
+let g:ackprg = 'rg --vimgrep --ignore-case'
+let g:ack_use_cword_for_empty_search = 1
+let g:ack_qhandler = 'botright copen 30'
+
 " configure fzf
-let g:fzf_layout = { 'down': '25%' }
+let g:fzf_layout = { 'down': '20' }
 
 " I want to use 'ag' not 'grep'
-set grepprg=ag\ --nogroup\ --silent\ --nocolor\ --column\ --vimgrep
+"set grepprg=ag\ --nogroup\ --silent\ --nocolor\ --column\ --vimgrep
+"set grepprg=rg\ --vimgrep\ --smart-case
 
 " Find is my command to find something, put it in the quickfix and redraw
-command! -nargs=+ Find execute 'silent grep! <args>' | botright copen 20| redraw!
+command! -nargs=+ Find execute 'Ack! <args>'
 
 " b for buffer search
 nnoremap <leader>b :Buffers<cr>
@@ -148,7 +161,9 @@ nnoremap <leader>F :Find<space>
 nnoremap <leader>f :Files<cr>
 
 " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+"let $FZF_DEFAULT_COMMAND = 'ag --literal -files-with-matches --nocolor --hidden -g ""'
+" use rg to find files
+let $FZF_DEFAULT_COMMAND = 'rg -l --vimgrep --ignore-case ""'
 
 " vim-test
 nnoremap <silent> <Leader>t :TestFile<CR>
@@ -162,20 +177,26 @@ command! TestLastFailures execute 'TestLast --only-failures'
 
 let test#strategy = 'vimterminal'
 let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
-let test#ruby#use_binstubs = 0
-let test#vim#term_position = 'botright 20'
+let test#ruby#rspec#executable = 'NO_COVERAGE=true bin/rspec'
+let test#ruby#use_binstubs = 1
+let test#vim#term_position = 'botright 30'
 
 " Nerd Tree
-nnoremap <silent> ` :NERDTreeToggle<CR>
 nnoremap <silent> - :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
-let NERDTreeWinSize=40
+let NERDTreeWinSize=80
+let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeQuitOnOpen = 1
 
 " Ale
 let g:ale_completion_enabled = 1
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:airline#extensions#ale#enabled = 1
 
 " I think this sets ale as a omnicompletion source, not sure so testing this
 " one.
@@ -187,16 +208,21 @@ let g:ale_linters_explicit = 1
 
 " linters
 let g:ale_linters = {
+\   '*': ['cspell'],
 \   'markdown': ['cspell'],
 \   'ruby': ['standardrb', 'solargraph', 'cspell'],
 \   'haml': ['hamllint', 'rubocop'],
 \   'gitcommit': ['gitlint', 'cspell'],
+\   'eruby': ['erblint', 'cspell']
 \}
 
-" the only fixer I want in vim is trim whitepace
+" fixers
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'markdown': ['prettier'],
+\   'eruby.yaml': ['prettier'],
 \}
+
 
 " and fix on save please
 let g:ale_fix_on_save = 1
@@ -213,10 +239,10 @@ let g:ale_haml_rubocop_executable = 'bundle'
 " Solargraph
 let g:ale_ruby_solargraph_executable = 'solargraph'
 let g:ale_ruby_solargraph_options = {}
-nnoremap <silent> <Leader>g :ALEGoToDefinition<CR>
+nnoremap <silent> <Leader>gd :ALEGoToDefinition<CR>
 
 " I think this turns off the underlining of errors and warnings
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 
 " file specific
 " markdown
@@ -249,3 +275,15 @@ nnoremap <silent> <leader>gg :GitGutterStageHunk<CR>
 
 " terminal in vim?
 nnoremap <silent> <leader>T :term<CR>
+
+" airline
+" don't like the unicode symbols, so we clear them all out!
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols_ascii = 1
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md', 'links_space_char': '_'}]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_ext2syntax = {}
