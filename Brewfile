@@ -60,8 +60,8 @@ brew 'cf-cli'
 tap 'heroku/brew'
 brew 'heroku'
 
-# silver searcher
-brew 'ag'
+# Rigprep
+brew 'ripgrep'
 
 # fuzzy find
 brew 'fzf'
