@@ -22,4 +22,4 @@
 - check user details in `~/src/dotfiles/git/gitconfig` are for work and
 match any gpg key ids required
 - copy public keys to github, gitlab, servers, etc
-- set Slack to commamd-return for sending
+- set Slack to command-return for sending
