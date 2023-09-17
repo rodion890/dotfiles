@@ -2,8 +2,6 @@
 export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-export PATH=$HOME/.composer/vendor/bin:$PATH
-export PATH=/usr/local/opt/openssl/bin:$PATH
 
 # languages
 # python
@@ -23,7 +21,7 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='3;33'
 
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
-export ARCHFLAGS='-arch x86_64'
+# export ARCHFLAGS='-arch x86_64'
 
 export LESS='--ignore-case --raw-control-chars'
 export PAGER='less'
@@ -41,8 +39,8 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 export HOMEBREW_INSTALL_BADGE=✅
 
 # try and not use my name for psql and postgres
-export PGUSER=postgres
-export USER=postgres
+#export PGUSER=postgres
+#export USER=postgres
 
 # home borg
 export BORG_REPO=ssh://borg@10.0.81.100:2222/var/backups/borg/

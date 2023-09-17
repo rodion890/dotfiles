@@ -10,16 +10,19 @@ source ~/src/dotfiles/zsh/bindkeys.zsh
 source ~/src/dotfiles/zsh/utilities.zsh
 source ~/src/dotfiles/zsh/history.zsh
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 
 # chnode
-source /usr/local/opt/chnode/share/chnode/chnode.sh
-source /usr/local/opt/chnode/share/chnode/auto.sh
+source $HOMEBREW_PREFIX/opt/chnode/share/chnode/chnode.sh
+source $HOMEBREW_PREFIX/opt/chnode/share/chnode/auto.sh
 
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
@@ -29,14 +32,14 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # auto load node version (not working)
-preexec_functions+=(auto_add)
+#preexec_functions+=(auto_add)
 
 # direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
-auto_add() {
-  chnode_auto
-}
+#auto_add() {
+#  chnode_auto
+#}
 
 # things to sort out
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
