@@ -31,3 +31,7 @@ tags.temp.tmp
 # environment files #
 #####################
 .env.*.local
+
+# solargraph #
+#############
+.solargraph.yml
