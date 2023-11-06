@@ -1,3 +1,6 @@
 # DfE words
 GIAS
 UKPRN
+Academisation
+GOVUK
+GOV.UK
