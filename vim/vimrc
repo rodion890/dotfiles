@@ -7,23 +7,22 @@ endif
 
 " plugins can be loaded now
 call plug#begin('~/.vim/plugged')
+  Plug 'sainnhe/edge'
   Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-rails'
   Plug 'janko/vim-test'
+  Plug 'dense-analysis/ale'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf'
-  Plug 'sainnhe/edge'
-  Plug 'vim-scripts/VimCompletesMe'
   Plug 'preservim/nerdtree'
-  Plug 'tpope/vim-rails'
-  Plug 'airblade/vim-gitgutter'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'airblade/vim-localorie'
-  Plug 'dense-analysis/ale'
+  Plug 'airblade/vim-gitgutter'
   Plug 'vimwiki/vimwiki'
-  Plug 'vim-ruby/vim-ruby'
   Plug 'vim-airline/vim-airline'
   Plug 'mileszs/ack.vim'
+  Plug 'vim-scripts/VimCompletesMe'
 call plug#end()
 
 " encoding
@@ -35,6 +34,7 @@ set background=dark
 let g:edge_better_performance = 1
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 0
+let g:airline_theme = 'edge'
 
 colorscheme edge
 
@@ -91,7 +91,7 @@ set cul
 
 " ruby syntax only runs well with the old regex engine
 " the new one makes vim so slow it is useless
-"set regexpengine=1
+" set regexpengine=1
 
 " line numbers
 set number
@@ -119,10 +119,6 @@ nnoremap <C-l> <C-w>l
 
 " Quicker closing
 noremap <C-c> <C-w>c
-
-" Quicker window resize
-nnoremap <C-w>> <C-=>
-nnoremap <C-w>< <C-->
 
 " don't use arrow keys
 nnoremap <Left> :echoe "Use h"<CR>
@@ -202,7 +198,6 @@ let g:airline#extensions#ale#enabled = 1
 " one.
 set omnifunc=ale#completion#OmniFunc
 
-
 " only run linters I tell you to
 let g:ale_linters_explicit = 1
 
@@ -213,7 +208,8 @@ let g:ale_linters = {
 \   'ruby': ['standardrb', 'solargraph', 'cspell'],
 \   'haml': ['hamllint', 'rubocop'],
 \   'gitcommit': ['gitlint', 'cspell'],
-\   'eruby': ['erblint', 'cspell']
+\   'eruby': ['erblint', 'cspell'],
+\   'vimwiki': ['cspell']
 \}
 
 " fixers
@@ -222,6 +218,9 @@ let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'eruby.yaml': ['prettier'],
 \}
+
+" Airline support
+let g:airline#extensions#ale#enabled = 1
 
 
 " and fix on save please
@@ -248,6 +247,7 @@ let g:ale_set_highlights = 1
 " markdown
 augroup markdown
 autocmd!
+autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufRead,BufNewFile *.md setlocal colorcolumn=81
 autocmd BufRead,BufNewFile *.md setlocal wrap
@@ -284,6 +284,6 @@ endif
 let g:airline_symbols_ascii = 1
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md', 'links_space_char': '_'}]
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {}
+let g:vimwiki_list = [{'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.md', 'links_space_char': '_'}]
