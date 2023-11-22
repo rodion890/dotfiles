@@ -1,6 +1,3 @@
-# mas - so we can install from the app store
-brew 'mas'
-
 # zsh
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
@@ -29,36 +26,26 @@ brew 'ruby-install'
 
 # node
 # https://github.com/tkareine/chnode
-brew tap tkareine/chnode
-brew install tkareine/chnode/chnode
-brew install node-build
+# brew tap tkareine/chnode
+#brew install tkareine/chnode/chnode
+# brew install node-build
 
 # php
-brew 'composer'
+#brew 'composer'
 
 # javascript
-brew 'yarn'
-brew 'node'
+#brew 'yarn'
+#brew 'node'
 
 # db
-brew 'sqlite'
-brew 'postgresql'
+#brew 'sqlite'
+#brew 'postgresql'
 
 # redis
-brew 'redis'
+#brew 'redis'
 
 # terraform
 brew 'terraform'
-tap 'wata727/tflint'
-brew 'tflint'
-
-# cloud foundary
-tap 'cloudfoundry/tap'
-brew 'cf-cli'
-
-# heroku
-tap 'heroku/brew'
-brew 'heroku'
 
 # Rigprep
 brew 'ripgrep'
@@ -72,16 +59,8 @@ tap 'homebrew/cask-versions'
 cask '1Password'
 cask 'bitwarden'
 cask 'docker'
-cask 'figma'
 cask 'firefox-developer-edition'
 cask 'github'
 cask 'google-chrome'
 cask 'postico'
-cask 'sequel-pro'
 cask 'slack'
-cask 'keybase'
-cask 'transmit'
-cask 'insomnia'
-
-# App Store
-mas 'iA writer', id: '775737590'
