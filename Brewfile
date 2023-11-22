@@ -9,7 +9,7 @@ brew 'vim'
 brew 'direnv'
 
 # tags
-brew 'universal-tags'
+brew 'universal-ctags'
 
 # gpg
 brew 'gpg'
