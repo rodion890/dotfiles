@@ -1,6 +1,13 @@
+GOVUK
+GOV.UK
+
 # DfE words
 GIAS
 UKPRN
 Academisation
-GOVUK
-GOV.UK
+BEIS
+
+# DSIT words (RODA)
+RODA
+ISPF
+GCRF
