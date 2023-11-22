@@ -44,3 +44,6 @@ export HOMEBREW_INSTALL_BADGE=✅
 
 # home borg
 export BORG_REPO=ssh://borg@10.0.81.100:2222/var/backups/borg/
+
+# Spring sucks
+export DISABLE_SPRING=true

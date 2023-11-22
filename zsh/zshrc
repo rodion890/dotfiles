@@ -10,8 +10,11 @@ source ~/src/dotfiles/zsh/bindkeys.zsh
 source ~/src/dotfiles/zsh/utilities.zsh
 source ~/src/dotfiles/zsh/history.zsh
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Intel Homebrew
+eval "$(/usr/local/bin/brew shellenv)"
+
+# Apple Silicon Homebrew
+#eval "$(/opt/homebrew/brew shellenv)"
 
 # syntax highlighting
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
