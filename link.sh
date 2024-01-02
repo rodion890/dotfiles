@@ -14,6 +14,7 @@ ln -sf ~/src/dotfiles/Brewfile ~/Brewfile
 
 # gpg
 ln -sf ~/src/dotfiles/gpg/gpg.conf ~/.gnupg/gpg.conf
+ln -sf ~/src/dotfiles/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
 # ssh
 ln -sf ~/src/dotfiles/ssh/config ~/.ssh/config
