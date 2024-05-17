@@ -17,4 +17,4 @@ alias g='git'
 alias v='vim'
 
 ## rails
-alias r='rails'
+alias r='bin/rails'
