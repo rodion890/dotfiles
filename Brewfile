@@ -5,6 +5,8 @@ brew 'zsh-syntax-highlighting'
 # vim
 brew 'vim'
 
+brew 'gitlint'
+
 # direnv
 brew 'direnv'
 
@@ -26,9 +28,9 @@ brew 'ruby-install'
 
 # node
 # https://github.com/tkareine/chnode
-# brew tap tkareine/chnode
-#brew install tkareine/chnode/chnode
-# brew install node-build
+brew tap tkareine/chnode
+brew 'tkareine/chnode/chnode'
+brew 'node-build'
 
 # php
 #brew 'composer'
