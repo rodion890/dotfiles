@@ -1,13 +1,29 @@
+klass
+klasses
+
+# Ruby and Rails
+Railtie
+rubocop
+parameterize
+
+# GOVUK
 GOVUK
 GOV.UK
+govspeak
+editionable
 
 # DfE words
 GIAS
 UKPRN
 Academisation
-BEIS
+sharepoint
+SharePoint
+
 
 # DSIT words (RODA)
 RODA
 ISPF
 GCRF
+DSIT
+IATI
+BEIS
