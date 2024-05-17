@@ -8,7 +8,7 @@
   `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/work_ed25519 -C "me@work.com"`
   - add a passphrase
 
-- create symlinks with `~/src/dotfiles/link.sh`
+- create symlinks with `~/src/dotfiles/install.sh`
 - run `brew bundle` from your home directory
 - add the ssh key to the keychain `ssh-add -K ~/.ssh/work`
 - change shell to zsh with `chsh` setting to `/bin/zsh` or the path to
