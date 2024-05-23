@@ -11,10 +11,13 @@ source ~/src/dotfiles/zsh/utilities.zsh
 source ~/src/dotfiles/zsh/history.zsh
 
 # Intel Homebrew
-eval "$(/usr/local/bin/brew shellenv)"
+# eval "$(/usr/local/bin/brew shellenv)"
 
 # Apple Silicon Homebrew
-#eval "$(/opt/homebrew/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # syntax highlighting
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -34,15 +37,5 @@ zstyle :prompt:pure:git:stash show yes
 autoload -U promptinit; promptinit
 prompt pure
 
-# auto load node version (not working)
-#preexec_functions+=(auto_add)
-
-# direnv
-# eval "$(direnv hook zsh)"
-
-#auto_add() {
-#  chnode_auto
-#}
-
-# things to sort out
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
+# auto load node version
+precmd_functions+=(chnode_auto)

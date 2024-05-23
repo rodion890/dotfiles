@@ -5,10 +5,19 @@ export PATH=/usr/local/sbin:$PATH
 
 # languages
 # python
-export PATH=$HOME/Library/Python/3.6/bin:$PATH
+export PATH=/opt/homebrew/opt/python/bin:$PATH
 
 #php
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
+
+#dalmation
+export PATH="/Users/meyric/src/dalmatian-tools/bin:$PATH"
+
+# Mysql
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# GOVUK
+export PATH="/Users/meyric/govuk/govuk-docker/exe:$PATH"
 
 # Setup terminal, and turn on colors
 export TERM=xterm-256color
@@ -46,4 +55,4 @@ export HOMEBREW_INSTALL_BADGE=✅
 export BORG_REPO=ssh://borg@10.0.81.100:2222/var/backups/borg/
 
 # Spring sucks
-export DISABLE_SPRING=true
+#export DISABLE_SPRING=true
