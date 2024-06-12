@@ -16,13 +16,15 @@ Thumbs.db
 *.swp
 
 .rspec-local
+.byebug_history
+
+# Tags #
+#######
 .tags
 tags
 tags.lock
 tags.temp
 tags.temp.tmp
-.byebug_history
-.solargraph_rails.rb
 
 # direnv #
 ##########
@@ -35,3 +37,8 @@ tags.temp.tmp
 # solargraph #
 #############
 .solargraph.yml
+.solargraph_rails.rb
+
+# Ruby language server #
+############
+.ruby-lsp
