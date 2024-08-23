@@ -18,6 +18,8 @@ UKPRN
 Academisation
 sharepoint
 SharePoint
+ukprns
+ukprn
 
 
 # DSIT words (RODA)
@@ -27,3 +29,6 @@ GCRF
 DSIT
 IATI
 BEIS
+
+# Gem words
+pagy
