@@ -25,6 +25,39 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/VimCompletesMe'
 call plug#end()
 
+" linters
+let g:ale_linters = {
+\   '*': ['cspell'],
+\   'markdown': ['cspell'],
+\   'ruby': ['standardrb', 'ruby-lsp', 'cspell'],
+\   'javascript': ['standard', 'cspell'],
+\   'haml': ['hamllint', 'rubocop', 'cspell'],
+\   'gitcommit': ['gitlint', 'cspell'],
+\   'eruby': ['erblint', 'cspell'],
+\   'vimwiki': ['cspell'],
+\   'eruby.yaml': ['cspell'],
+\}
+
+" fixers
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'markdown': ['prettier'],
+\   'eruby.yaml': ['prettier'],
+\}
+
+" setup Ruby-lsp
+call ale#linter#Define('ruby', {
+\   'name': 'ruby-lsp',
+\   'lsp': 'stdio',
+\   'command': 'ruby-lsp',
+\   'language': 'ruby',
+\   'executable': 'ruby-lsp',
+\   'project_root': function('ale#ruby#FindProjectRoot'),
+\})
+
+" only run linters I tell you to
+let g:ale_linters_explicit = 1
+
 " encoding
 set encoding=utf-8
 
@@ -45,6 +78,10 @@ command! DarkMode set background=dark
 " search hightlight
 set hlsearch
 highlight Search ctermbg=Yellow ctermfg=235
+
+" spell highlight
+highlight SpellBad cterm=underline,italic
+highlight SpellBad ctermfg=Magenta
 
 " basic stuff
 set backspace=2
@@ -127,7 +164,7 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " don't know what Ex mode is
-nnoremap gQ :echoe "Don't know what Ex mode is"<CR>
+nnoremap gQ :echo "Don't know what Ex mode is"<CR>
 
 " source it
 command! Src execute 'source ~/.vimrc'
@@ -192,36 +229,13 @@ let g:ale_completion_enabled = 1
 let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-let g:airline#extensions#ale#enabled = 1
 
 " I think this sets ale as a omnicompletion source, not sure so testing this
 " one.
 set omnifunc=ale#completion#OmniFunc
 
-" only run linters I tell you to
-let g:ale_linters_explicit = 1
-
-" linters
-let g:ale_linters = {
-\   '*': ['cspell'],
-\   'markdown': ['cspell'],
-\   'ruby': ['standardrb', 'solargraph', 'cspell'],
-\   'haml': ['hamllint', 'rubocop'],
-\   'gitcommit': ['gitlint', 'cspell'],
-\   'eruby': ['erblint', 'cspell'],
-\   'vimwiki': ['cspell']
-\}
-
-" fixers
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'markdown': ['prettier'],
-\   'eruby.yaml': ['prettier'],
-\}
-
 " Airline support
 let g:airline#extensions#ale#enabled = 1
-
 
 " and fix on save please
 let g:ale_fix_on_save = 1
@@ -235,13 +249,17 @@ let g:ale_ruby_standardrb_executable = 'bundle'
 let g:ale_haml_hamllint_executable = 'bundle'
 let g:ale_haml_rubocop_executable = 'bundle'
 
+" cspell config
+let g:ale_cspell_options = '--config ~/cspell.config.yml'
+let g:ale_cspell_use_global = 1
+
 " Solargraph
-let g:ale_ruby_solargraph_executable = 'solargraph'
-let g:ale_ruby_solargraph_options = {}
-nnoremap <silent> <Leader>gd :ALEGoToDefinition<CR>
+" let g:ale_ruby_solargraph_executable = 'solargraph'
+" let g:ale_ruby_solargraph_options = {}
+" nnoremap <silent> <Leader>gd :ALEGoToDefinition<CR>
 
 " I think this turns off the underlining of errors and warnings
-let g:ale_set_highlights = 1
+" let g:ale_set_highlights = 0
 
 " file specific
 " markdown
@@ -256,6 +274,7 @@ augroup END
 " git commit message
 augroup gitcommit
 autocmd!
+autocmd BufRead,BufNewFile gitcommit setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType gitcommit setlocal wrap
 autocmd FileType gitcommit setlocal textwidth=72
