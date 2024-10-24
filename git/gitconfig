@@ -28,7 +28,9 @@
   pr = restore . -p
   pa = add . -p
   cp = cherry-pick
+  b = branch
   fb = "!f() { git branch | grep $1; }; f"
+  sc = show --stat
 [diff]
   tool = vimdiff
 [filter "lfs"]
