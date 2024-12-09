@@ -59,3 +59,6 @@ export DISABLE_SPRING=true
 
 # Merge tool
 export THOR_MERGE=vimdiff
+
+# nvm
+export NVM_DIR="$HOME/.nvm"

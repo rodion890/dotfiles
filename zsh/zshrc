@@ -26,9 +26,9 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 
-# chnode
-source $HOMEBREW_PREFIX/opt/chnode/share/chnode/chnode.sh
-source $HOMEBREW_PREFIX/opt/chnode/share/chnode/auto.sh
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
@@ -36,6 +36,3 @@ zstyle :prompt:pure:git:stash show yes
 # initalise pure prompt
 autoload -U promptinit; promptinit
 prompt pure
-
-# auto load node version
-precmd_functions+=(chnode_auto)
