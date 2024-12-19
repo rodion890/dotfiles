@@ -27,17 +27,15 @@ brew 'chruby'
 brew 'ruby-install'
 
 # node
-# https://github.com/tkareine/chnode
-brew tap tkareine/chnode
-brew 'tkareine/chnode/chnode'
-brew 'node-build'
+brew 'node'
+
+# yarn
+brew 'yarn'
 
 # php
 #brew 'composer'
 
 # javascript
-#brew 'yarn'
-#brew 'node'
 
 # db
 #brew 'sqlite'
@@ -47,7 +45,7 @@ brew 'node-build'
 #brew 'redis'
 
 # terraform
-brew 'terraform'
+#brew 'terraform'
 
 # Rigprep
 brew 'ripgrep'
@@ -55,7 +53,7 @@ brew 'ripgrep'
 # fuzzy find
 brew 'fzf'
 
-# casks
+# apps
 tap 'homebrew/cask-versions'
 
 cask '1Password'
@@ -67,3 +65,6 @@ cask 'google-chrome'
 cask 'postico'
 cask 'slack'
 cask 'gitify'
+
+# fonts
+cask 'font-ia-writer-mono'
